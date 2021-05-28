@@ -2,7 +2,7 @@ import React from 'react';
 
 import CartIcon from '../Cart/CartIcon';
 import classes from './HeaderCartButton.module.css';
-//6) add CartIcon in first span- => 7 to Header.js
+//6) add CartIcon in first span- => 7) to availableMeals
 
 const HeaderCartButtom = props => { 
     return <button className={classes.button}>

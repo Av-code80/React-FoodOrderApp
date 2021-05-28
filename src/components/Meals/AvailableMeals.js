@@ -1,6 +1,10 @@
 import React from 'react'
+import Card from '../UI/Card';
+import classes from './AvailableMeals.module.css';
+import MealItem from './MealItem/MealItem';
 
-
+//7) we want to render this array meals as JSX, so need to 
+//transform it to an array of JSX element => 8) meals.js
 
 const DUMMY_MEALS = [
     {
@@ -29,10 +33,30 @@ const DUMMY_MEALS = [
     },
   ];
 
+  //return here object to jsx code by creating variable and do map
+  //and we down the variable to output it
+  //11) wrapp ul by Card =>12) to MealItem.js
+  //16)now can map to MealItem instead ListItem--get access id here 
+  //by meal.id etc. => 17) to MealItemForm.js
 const AvailableMeals = () => {
-    return 
-       
+   const mealsList =  DUMMY_MEALS.map((meal) =>
+   <MealItem
+   key={meal.id}
+   name={meal.name}
+   description={meal.description}
+   price={meal.price}
+    />);
+
+   return <section className={classes.meals}>
+        <Card>
+        <ul>
+           {mealsList}
+        </ul>
+        </Card>
+    </section>       
     
 };
 
 export default AvailableMeals;
+
+//by map we want to return a jsx element which represent this meal item.
