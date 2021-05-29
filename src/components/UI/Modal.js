@@ -2,10 +2,10 @@ import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 import classes from './Modal.module.css';
-
+//39)add onClick prop to backdrop div for modal
 //24*) make backdrop & modalOverlay components ,
 const Backdrop = (props) => {
-    return <div className={classes.backdrop} />;
+    return <div className={classes.backdrop} onClick={props.ocClose} />;
 };
 //25**)inseid of 2div put props.children
 const ModalOverlay = (props) => {
@@ -22,10 +22,10 @@ const portalElement = document.getElementById('overlays');
 //26***) need also to return markup, make Fragmenet then output 2 dynamic portal expression
 //27)need also to know where to portal: id="overlays" is in HTML file 
 //portalElement is as second argument to both created portal calls. => 28) to Cart.js
-const Modal = props => {
+const Modal = (props) => { //40) set down onClose props on Backdrop =>41) to cart-context.js
     return (
-    <Fragment>
-    {ReactDOM.createPortal(<Backdrop />, portalElement)}
+    <Fragment> 
+    {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
     {ReactDOM.createPortal(
       <ModalOverlay>{props.children}</ModalOverlay>,
       portalElement

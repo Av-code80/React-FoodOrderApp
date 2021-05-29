@@ -11,23 +11,26 @@ const  Cart = props => {
         name: 'Sushi',
         amount: 2, 
         price: 12.99}
-        ].map(item => <li>{item.name}</li>)}</ul>;
+        ].map((item) => <li>{item.name}</li>)}</ul>;
 
 //28)replace div by <modal> and output the card into =>29) App.js 
-    return (
-    <Modal>
-        {cartItems}
-        <div className={classes.total}>
-         <span>Total Amount</span>   
-         <span>35.62</span>
-        </div>
-        <div className={classes.actions}>
-            <button className={classes['button--alt']}>Close</button>
-            <button className={classes.button}>Order</button>
-        </div>
+return (
+    <Modal onClose={props.onClose}>
+      {cartItems}
+      <div className={classes.total}>
+        <span>Total Amount</span>
+        <span>35.62</span>
+      </div>
+      <div className={classes.actions}>
+        <button className={classes['button--alt']} onClick={props.onClose}>
+          Close
+        </button>
+        <button className={classes.button}>Order</button>
+      </div>
     </Modal>
-    );
+  );
 };
+//38) to make onClick={props.onClose} =>39 go to
 
 export default Cart ;
 
