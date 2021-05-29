@@ -1,16 +1,19 @@
 import React from 'react'
-
+//64) make sure do it
 import classes from './Input.module.css';
 
 //19*)make div, label, text, input/.- label text must be configurable
 //setting htmlFor prop. defin id prop to get it to Input**
-const Input = props => {
-    return <div className={classes.input}>
+const Input = React.forwardRef((props, ref) => {
+    //66)use ref inside component to forward it in input ref={ref}, then forwad it in MealItemForm => 67) MealItemForm
+    return (
+     <div className={classes.input}>
         <label htmlFor={props.input.id}>{props.label}</label>
-        <input id={props.input.id} {...props.input} />
-
-    </div>    
-};
+        <input ref={ref} {...props.input} />
+     </div>   
+   );  
+});
+//65) wrap component func with ref
 //20)trick to pass other configuration data to input as props by spread{...} => 21) to MealItemForm
 export default Input;
 

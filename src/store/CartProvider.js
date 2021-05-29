@@ -10,17 +10,61 @@ const defaultCartState = {
 //52**)then outside of component, add cartReducer
 const cartReducer = (state, action) => {
 //58)now go here to start adding logic for adding a cart item here
-    if(action.type === 'ADD') {//here update cartItems and totalAmount
-        const updatedItems = state.items.concat(action.item);
-        const updatedTotalAmount = state.totalAmount 
-        + action.item.price * action.item.amount;
-        return {
-            items: updatedItems,
-            totalAmount: updatedTotalAmount
+    if (action.type === 'ADD') {//here update cartItems and totalAmount
+        const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;    
+    //91) check if item is already part of cart !    
+     const existingCartItemIndex = state.items.findIndex
+     ((item) => item.id === action.item.id);
+     //92) get existing cartItem
+     const existingCartItem = state.items[existingCartItemIndex];
+    //93) add updatedItem & updateItems
+    let updatedItem;
+    let updatedItems;
+    //94) if existingCartItem is a thing if it's true, 
+    //if yes updatedItem ll be = to new object where we copy existingCartItem
+    if (existingCartItem) {
+       const updatedItem = {
+            ...existingCartItem,
+            amount: existingCartItem.amount + action.it.amount
         };
+        updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
+    } else {//if item is added for first time. we set updatedItems to diff things => 95) Cart.js
+        updatedItems = state.items.concat(action.item);
     }
-    return defaultCartState;
-};
+
+        return {
+          items: updatedItems,
+          totalAmount: updatedTotalAmount
+    };
+    }
+     //96)check if action type is equal to remove
+     if (action.type === 'REMOVE') {
+        const existingCartItemIndex = state.items.findIndex(
+          (item) => item.id === action.id // that's a it we wanna get rid of
+        );
+        const existingItem = state.items[existingCartItemIndex];
+        const updatedTotalAmount = state.totalAmount - existingItem.price; //this line is always corrrect
+        let updatedItems;
+        if (existingItem.amount === 1) {
+          updatedItems = state.items.filter(item => item.id !== action.id); 
+          //want to keep all items, but wanna remove items with id which we get on our action here
+          //with this check make sure all items with no equal id to action id are kept
+          //but one item where item id is equal to id action, is to be removed id
+          // for that one item we return false here, return false then w'll remove it from newly generated array
+        } else {
+        //97)if amount is greater than one, don't wanna remove item from array
+        //just wanna update the amount => 98) carte.js
+          const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
+          updatedItems = [...state.items];
+          updatedItems[existingCartItemIndex] = updatedItem;
+        } //we override one of these items, then override ols item in array which is updted amount
+    
+        return {
+          items: updatedItems,
+          totalAmount: updatedTotalAmount
+        };
+      }
 
 //let to wrap any components that must get access to this component
 const CartProvider = (props) => { //54***) call useReducer, then make deconstruction
@@ -33,7 +77,7 @@ const CartProvider = (props) => { //54***) call useReducer, then make deconstruc
     }; //so forwarding item to reducer
 
     const removeItemFromCartHandler = id => {
-//59)
+//59*****) => 60) to MealItemForm.js
     dispatchCartAction({type: 'REMOVE', id: id});
     }; 
 
@@ -56,12 +100,10 @@ const CartProvider = (props) => { //54***) call useReducer, then make deconstruc
 //and manage state in this component
 export default CartProvider;
 //42) cartContext is a helper const that is an object, this ll be concrete contexte 
-//value that ll be updated over time
+//value that ll be updated over time.
 
-
-
-//in the end we manage our cart data here
-//goal of this file is manage cart-context data and 
+//in the end we manage our cart data here. 
+//Goal of this file is manage cart-context data and 
 //provide that context to all components that want access to it
  //* can use CartProvider component to wrap all components that need to cart
  //at our app all components are rendered in App, Cart need acces to
@@ -77,4 +119,5 @@ export default CartProvider;
 //which let to identify that action inside of reducer of function here cartReducer
 
 
-//forensuring that addItemToCartHandler is called 
+//*****60)for ensuring that addItemToCartHandler is called for that need to go place 
+// wanna call context object in MealItemForm.js.

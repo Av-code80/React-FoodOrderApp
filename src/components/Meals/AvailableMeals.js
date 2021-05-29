@@ -42,7 +42,7 @@ const AvailableMeals = () => {
    const mealsList =  DUMMY_MEALS.map((meal) =>
    <MealItem
    id={meal.id} //it's new
-   key={meal.id}
+   key={meal.id}   //80) to be sure getting id =>81) for output cart item go Cart.JS
    name={meal.name}
    description={meal.description}
    price={meal.price}
