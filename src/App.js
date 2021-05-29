@@ -1,8 +1,9 @@
-import  { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 import Header from './components/Layout/Header'; 
 import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
 
 //4)instead of h2 we use <Header> in return
 //5) in return section turn div into Fragmenet => 6) to CartIcon
@@ -18,16 +19,16 @@ const showCartHandler = () => {
 const hideCartHandler =() => {
   setCartIsShown(false);
 };
-
+//46)so can replace Fragmenet by CartProvider and can remove Fragment in import up =>47) to HEaderCartButton
 //33)button Header must be called,so can point showCartHandler in Header =>34)to Header.js
   return ( //30) add Cart 
-    <Fragment>
+    <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler}/>} 
       <Header onShowCart={showCartHandler} />
     <main>
       <Meals />
     </main>
-    </Fragment>
+    </CartProvider>
   );
 }
 
