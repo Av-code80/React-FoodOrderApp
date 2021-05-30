@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'; // it let access to Ract.Fragement
+import { Fragment } from 'react'; // it let access to Ract.Fragement
 
 import HeaderCartButtom from './HeaderCartButton';
 import mealsImage from '../../assets/meals.jpeg';

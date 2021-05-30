@@ -11,5 +11,5 @@ return <div className={classes.card}>{props.children}</div>
 export default Card;
 
 
-//Wrapper can contain all elements ini it by props.children is 
+//Wrapper can contain all elements inside it by props.children which is 
 //in the end used inside Card
