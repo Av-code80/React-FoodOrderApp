@@ -11,21 +11,22 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
 //58)now go here to start adding logic for adding a cart item here
     if (action.type === 'ADD') {//here update cartItems and totalAmount
-        const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;    
+        const updatedTotalAmount = 
+        state.totalAmount + action.item.price * action.item.amount;    
     //91) check if item is already part of cart !    
-     const existingCartItemIndex = state.items.findIndex
-     ((item) => item.id === action.item.id);
+     const existingCartItemIndex = state.items.findIndex(
+         (item) => item.id === action.item.id
+         );
      //92) get existing cartItem
      const existingCartItem = state.items[existingCartItemIndex];
     //93) add updatedItem & updateItems
-    let updatedItem;
     let updatedItems;
     //94) if existingCartItem is a thing if it's true, 
     //if yes updatedItem ll be = to new object where we copy existingCartItem
     if (existingCartItem) {
-       const updatedItem = {
-            ...existingCartItem,
-            amount: existingCartItem.amount + action.it.amount
+        const updatedItem = {
+          ...existingCartItem,
+          amount: existingCartItem.amount + action.item.amount,
         };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
@@ -37,7 +38,8 @@ const cartReducer = (state, action) => {
           items: updatedItems,
           totalAmount: updatedTotalAmount
     };
-    }
+    };
+
      //96)check if action type is equal to remove
      if (action.type === 'REMOVE') {
         const existingCartItemIndex = state.items.findIndex(
@@ -61,10 +63,12 @@ const cartReducer = (state, action) => {
         } //we override one of these items, then override ols item in array which is updted amount
     
         return {
-          items: updatedItems,
-          totalAmount: updatedTotalAmount
-        };
-      }
+            items: updatedItems,
+            totalAmount: updatedTotalAmount
+          };
+        }
+        return defaultCartState;
+    };
 
 //let to wrap any components that must get access to this component
 const CartProvider = (props) => { //54***) call useReducer, then make deconstruction
@@ -120,4 +124,4 @@ export default CartProvider;
 
 
 //*****60)for ensuring that addItemToCartHandler is called for that need to go place 
-// wanna call context object in MealItemForm.js.
+// wanna call context object in MealItemForm.js}.
