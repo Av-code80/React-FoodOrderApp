@@ -60,7 +60,6 @@ const HeaderCartButton = (props) => {
 };
 
 export default HeaderCartButton;
-
 //in this component having an icon, some text, a little badge
 //with current number of items in cart, so need 3 span
 
