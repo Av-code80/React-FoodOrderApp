@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-//41)
 const CartContext = React.createContext({
     items: [],
     totalAmount: 0,
@@ -10,7 +9,6 @@ const CartContext = React.createContext({
 });
 
 export default CartContext;
-
 
 //41) initialise this context with default data that giv better auto completion
 

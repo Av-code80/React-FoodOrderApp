@@ -12,9 +12,9 @@ const Input = React.forwardRef((props, ref) => {
         <input ref={ref} {...props.input} />
      </div>   
    );  
-});
+}); 
 //65) wrap component func with ref
-//20)trick to pass other configuration data to input as props by spread{...} => 21) to MealItemForm
+//20)trick, to pass other configuration data to input as props by spread{...} => 21) to MealItemForm
 export default Input;
 
 
@@ -24,4 +24,4 @@ export default Input;
 //object with configuration data like => id
 //**spread ensure that all key value pairs in input object which recieved
 //on props input are added as props to input. so this input recieves object data
-// from out of this component and we can remve also id={props.input.id} from input if like
+// from out of this component and we can remove also id={props.input.id} from input if like

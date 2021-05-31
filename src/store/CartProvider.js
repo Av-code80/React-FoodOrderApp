@@ -2,27 +2,26 @@ import { useReducer } from 'react';
 //51)useReducer for managing state
 import CartContext from './cart-context';
 
-//53)defin an object and return it in cartReducer
+//53)define an object and return it in cartReducer
 const defaultCartState = {
     items: [],
     totalAmount: 0  
 };
 //52**)then outside of component, add cartReducer
 const cartReducer = (state, action) => {
-//58)now go here to start adding logic for adding a cart item here
+//58)now come here to start adding logic for adding a cart item here
     if (action.type === 'ADD') {//here update cartItems and totalAmount
-        const updatedTotalAmount = 
-        state.totalAmount + action.item.price * action.item.amount;    
+const updatedTotalAmount =  state.totalAmount + action.item.price * action.item.amount;    
     //91) check if item is already part of cart !    
-     const existingCartItemIndex = state.items.findIndex(
-         (item) => item.id === action.item.id
+const existingCartItemIndex = state.items.findIndex((item) => item.id === action.item.id
          );
      //92) get existing cartItem
      const existingCartItem = state.items[existingCartItemIndex];
     //93) add updatedItem & updateItems
-    let updatedItems;
+
     //94) if existingCartItem is a thing if it's true, 
     //if yes updatedItem ll be = to new object where we copy existingCartItem
+    let updatedItems;
     if (existingCartItem) {
         const updatedItem = {
           ...existingCartItem,
@@ -71,7 +70,7 @@ const cartReducer = (state, action) => {
     };
 
 //let to wrap any components that must get access to this component
-const CartProvider = (props) => { //54***) call useReducer, then make deconstruction
+const CartProvider = (props) => { //54)*** call useReducer, then make deconstruction
    const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
     
 //43) addItem...get the item and do sth with--remove...get ID do sth wth it
@@ -80,7 +79,7 @@ const CartProvider = (props) => { //54***) call useReducer, then make deconstruc
     dispatchCartAction({type: 'ADD', item: item}) //second item point (item)
     }; //so forwarding item to reducer
 
-    const removeItemFromCartHandler = id => {
+    const removeItemFromCartHandler = (id) => {
 //59*****) => 60) to MealItemForm.js
     dispatchCartAction({type: 'REMOVE', id: id});
     }; 
@@ -109,14 +108,15 @@ export default CartProvider;
 //in the end we manage our cart data here. 
 //Goal of this file is manage cart-context data and 
 //provide that context to all components that want access to it
+
  //* can use CartProvider component to wrap all components that need to cart
  //at our app all components are rendered in App, Cart need acces to
  //render cartItems, Header, badge too, and meals need Cart, add or remove
  // so can replace CartProvider in App.js
 
- //** ooutside of component bcz useReducer won't need any surrounding data
+ //** outside of component bcz useReducer won't need any surrounding data
 
- //*** just point it not executed here. in CartProvider, defaultcartState
+ //*** just point it not executed here. In CartProvider, defaultcartState
  //is initial state
 
 //**** dispatchCartAction, an action must be an object ({}) has some properties

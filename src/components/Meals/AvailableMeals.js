@@ -36,7 +36,7 @@ const DUMMY_MEALS = [
   //return here object to jsx code by creating variable and do map
   //and we down the variable to output it
   //11) wrapp ul by Card =>12) to MealItem.js
-  //16)now can map to MealItem instead ListItem--get access id here 
+  //16)Now can map to MealItem instead ListItem--get access id here 
   //by meal.id etc. => 17) to MealItemForm.js
 const AvailableMeals = () => {
    const mealsList =  DUMMY_MEALS.map((meal) =>

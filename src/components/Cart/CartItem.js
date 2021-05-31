@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
-    const price = `$${props.price.toFixed(2)}`; //90) add toFuxed(2) for force 
+    const price = `$${props.price.toFixed(2)}`; //90) add toFixed(2) for force 
   //this to all these have 2 decimal places =>91) to CartProvider.js
   
     return (

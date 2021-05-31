@@ -1,28 +1,27 @@
 import { useRef, useState } from 'react';
-//69) manag error message by useState
+//69) managing error message by useState
 import Input from '../../UI/Input';
 import classes from './MealItemForm.module.css';
 
 //17)make input wich is built in Input.js
 //21*)replacing <input> by <Input>, then add label prop built in Input.js
-//then add input that it's value is an object{{}} and init we have id etc.
-//this props content are attributed autpmatcily to {...props.input} in Input.js => 22) to Cart.js
+//then add input that it's value is an object{{}} and inside we have id etc.
+//this props content are attributed automatcily to {...props.input} in Input.js => 22) to Cart.js
 const MealItemForm = props => {
-//70)contorl whether this for is valid or not
+//70)contorl whether this form is valid or not
 const [amountIsValid, setAmountIsValid] = useState(true);
 //63) useRef()
 const amountInputRef = useRef();
 //60)for sending event automatically by calling func, preventDefault
 //then extract entered amount create ref
-const  submitHandler =event => {
+const  submitHandler = event => {
     event.preventDefault(event);
 //67)let read entered value in submitHandler then convert value string to number
     const enteredAmount = amountInputRef.current.value; //value is always string
     const enteredAmountNumber = +enteredAmount;     //convert etring to number
 //68***)
 if (
-   enteredAmount.trim().length === 0 || 
-   enteredAmountNumber < 1 ||
+   enteredAmount.trim().length === 0 || enteredAmountNumber < 1 ||
    enteredAmountNumber > 5
    ){ //71)for checking by useState
       setAmountIsValid(false); //and if amountIsValid is false!go at bottom 72
@@ -44,7 +43,7 @@ if (
             min: '0',
             max: '5',
             step: '1',
-            defaultValue: '1',
+            defaultValue: '0',
         }} />
         <button>+ Add</button> 
         {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}

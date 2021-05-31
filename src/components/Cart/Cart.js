@@ -7,8 +7,8 @@ import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 
 
-//22)make  a div ll be modal component, total amount, 2 actions buttons
-//23*)for cartitem make const as example to map all cartitem to cartitem JSX => 24 to Modal.js
+//22)make a div ll be modal component, total amount, 2 actions buttons
+//23*)for cartItems make const as example to map all cartitem to cartitem JSX => 24 to Modal.js
 const  Cart = (props) => { 
 //82)
 const cartCtx = useContext(CartContext);
@@ -31,7 +31,7 @@ const cartItemAddHandler = (item) => {
 
     const cartItems = (
     <ul className={classes['cart-items']}>
-      {/* {[{id: 'c1', name: 'Sushi',amount: 2, price: 12.99}-- 83 don't need it.
+      {/* {[{id: 'c1', name: 'Sushi',amount: 2, price: 12.99}-- 83 don't need to it.
         //88) add CartItem here */}
         {cartCtx.items.map((item) => (
           <CartItem
@@ -48,7 +48,7 @@ const cartItemAddHandler = (item) => {
     </ul>
   );
 
-//28)replace div by <modal> and output the card into =>29) App.js 
+//28)replace div by <Modal> and output the card into =>29) App.js 
 return (//85) point totalAmount in span--
     <Modal onClose={props.onClose}>
       {cartItems}
@@ -67,7 +67,7 @@ return (//85) point totalAmount in span--
   );//86a) want to be sure that in order button is only 
   //showing up if we have items in cart 
 };
-//38) to make onClick={props.onClose} =>39 go to
+//38) to make onClick={props.onClose} =>39 go to modal
 
 export default Cart ;
 

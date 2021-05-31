@@ -5,9 +5,11 @@ import classes from './Modal.module.css';
 //39)add onClick prop to backdrop div for modal
 //24*) make backdrop & modalOverlay components ,
 const Backdrop = (props) => {
-    return <div className={classes.backdrop} onClick={props.ocClose} />;
+    return (
+    <div className={classes.backdrop} onClick={props.onClose} />
+    );
 };
-//25**)inseid of 2div put props.children
+//25**)insid of modal div put props.children
 const ModalOverlay = (props) => {
     return (
     <div className={classes.modal}>
@@ -25,11 +27,12 @@ const portalElement = document.getElementById('overlays');
 const Modal = (props) => { //40) set down onClose props on Backdrop =>41) to cart-context.js
     return (
     <Fragment> 
-    {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
+    {ReactDOM.createPortal(
+    <Backdrop onClose={props.onClose} />, portalElement)}
+
     {ReactDOM.createPortal(
       <ModalOverlay>{props.children}</ModalOverlay>,
-      portalElement
-    )}
+      portalElement)}
   </Fragment>
 );
 };

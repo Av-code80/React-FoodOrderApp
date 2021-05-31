@@ -10,7 +10,7 @@ import CartProvider from './store/CartProvider';
 //9) set <Main> which is a difault Html5 element. => 10) to Card.js
 function App() { //31 make useState
   const [cartIsShown, setCartIsShown] = useState(false);
-//31*) call setCartIsShown inside it &make hideCarHandler then need to 
+//31*) call setCartIsShown inside it & make hideCarHandler then need to 
 //use cartIsShown state & this 2 func are called
 const showCartHandler = () => {
   setCartIsShown(true);
@@ -19,7 +19,7 @@ const showCartHandler = () => {
 const hideCartHandler =() => {
   setCartIsShown(false);
 };
-//46)so can replace Fragmenet by CartProvider and can remove Fragment in import up =>47) to HEaderCartButton
+//46)so can replace Fragment by CartProvider and can remove Fragment in import up =>47) to HeaderCartButton
 //33)button Header must be called,so can point showCartHandler in Header =>34)to Header.js
   return ( //30) add Cart 
     <CartProvider>
