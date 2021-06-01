@@ -21,5 +21,6 @@ const CartItem = (props) => {
       </li>
     );
 };
+
     //it output price, amount, button for adding & removing
 export default CartItem;
