@@ -32,6 +32,7 @@ const hideCartHandler =() => {
   );
 }
 
+
 export default App;
 //37)for handling backdrop modal when click on close button, 
 //now need too handle it by going throw 38) cart.js closing button
