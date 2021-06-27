@@ -19,6 +19,7 @@ const showCartHandler = () => {
 const hideCartHandler =() => {
   setCartIsShown(false);
 };
+
 //46)so can replace Fragment by CartProvider and can remove Fragment in import up =>47) to HeaderCartButton
 //33)button Header must be called,so can point showCartHandler in Header =>34)to Header.js
   return ( //30) add Cart 
